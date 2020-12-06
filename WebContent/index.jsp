@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,6 +46,8 @@
 	 <hr>
 	 <%
 	 	String username="admin";
+	 	//List list2 = new ArrayList();
+	 	//list2= request.getAttribute("list2");
 	 	//username = application.getAttribute("username").toString();
 	 	Cookie[] cookies = request.getCookies();
 	 	System.out.println(cookies);
@@ -60,6 +65,7 @@
 	 <div style="float: right; height:20px;"><strong>欢迎你！ <%= username %> </strong></div>
 	 <div style="clear: both;"></div>
 	 <hr>
+	 
 	 <div class="contaier" style="width: 450px; margin: 130px auto;">
 	 	<div class="title" style="border-bottom: 1px solid black;">发布文章</div>
 	 	<form action="/myFirstJavaProject/addArticle" method="GET">
@@ -73,6 +79,22 @@
 	 				<td>
 	 					<textarea rows="5" cols="25" name="content" placeholder="请输入文章内容">
 	 					</textarea>
+	 				</td>
+	 			</tr>
+	 			<tr>
+	 				<td>所属目录:</td>
+	 				<td>
+	 					<select name="catalog">
+	 						 <c:forEach items="${list2}"  var="k" > 
+	 						 	<%-- <c:out value="  ${k} "/><br> --%> 
+	 						 	<option value="${k} ">${k} </option> 
+	 						 </c:forEach>
+	 					</select>
+	 					<!-- <select>
+	 						<option value="1">目录1</option>
+	 						<option value="2">目录2</option>
+	 						<option value="3">目录3</option>
+	 					</select> -->
 	 				</td>
 	 			</tr>
 	 			<tr>

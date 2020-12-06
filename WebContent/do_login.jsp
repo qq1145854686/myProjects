@@ -21,7 +21,8 @@
 		Statement stmt = conn.createStatement();
 		ResultSet rs= stmt.executeQuery(sqlQuery);
 		if (rs.next()) {
-			response.sendRedirect("index.jsp");
+			request.getRequestDispatcher("do_index").forward(request, response);
+			//response.sendRedirect("index.jsp");
 		} else {
 			response.sendRedirect("error.jsp");
 			System.out.print("用户名密码不存在!");

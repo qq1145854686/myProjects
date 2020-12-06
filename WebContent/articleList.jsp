@@ -21,10 +21,12 @@
 		a.add("莹莹");
 		a.add("妮妮");
 		request.setAttribute("a",a);
+		//response.setCharacterEncoding("utf-8");
+		//request.setCharacterEncoding("utf-8");
 	%>
 	<!-- jstl表达式遍历输出内容 -->
-	<c:forEach var="item"  items="${list}"  begin="1" end="10" varStatus="s">
-		<label>标题：</label>&nbsp;<c:out value="  ${item.title } "/><br>
+	<c:forEach var="item"  items="${list}"  begin="0" end="10"  varStatus="s" >
+		<label>标题：</label>&nbsp;<c:out value="  ${item.title } "/>&nbsp;<label>所属目录:</label><c:out value="  ${item.catalog } "/><br>
 		<hr>
 		<label>内容：</label>&nbsp;<c:out value="${item.content} "/><br>
 		<a href="/myFirstJavaProject/getArticleDetail?id=${item.id}"><button>详情</button></a>

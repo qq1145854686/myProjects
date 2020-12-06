@@ -55,7 +55,9 @@ public class addArticle<boolen> extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//注释掉影响显示乱码问题
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setCharacterEncoding("utf-8");
 		System.out.print("进入doGet处理方法");
 		PrintWriter out = ( response).getWriter();
 		final String DB_URL="jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true";
@@ -70,8 +72,11 @@ public class addArticle<boolen> extends HttpServlet {
         response.setCharacterEncoding("utf-8");
 		//获取请求的参数
 		//String title = request.getParameter("title");
-        String title = new String(request.getParameter("title").getBytes("iso-8859-1"), "utf-8");
+        //String title = new String(request.getParameter("title").getBytes("iso-8859-1"), "utf-8");
+        String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		String catalog = request.getParameter("catalog");
+		System.out.println("catalog:"+catalog);
         try{
             // 注册 JDBC 驱动器
             Class.forName("com.mysql.jdbc.Driver");
@@ -83,11 +88,14 @@ public class addArticle<boolen> extends HttpServlet {
             System.out.println("stmt:"+stmt);
             String sql;
             //sql = "SELECT id, first, last, age FROM Employees";
-            sql = "INSERT INTO article_table (article_title, article_content) VALUES ( ' "+title+" ',' "+content+" ')";
+            sql = "INSERT INTO article_table (article_title, article_content, article_catalog) VALUES ( ' "+title+" ',' "+content+"',' "+catalog+" ')";
             System.out.println("sql:"+sql);
-           boolean rs = stmt.execute(sql);
+           //boolean rs = stmt.execute(sql);
+           System.out.println("123");
            int result = stmt.executeUpdate(sql);
            if (result == 1) {
+        	   //response.setCharacterEncoding("UTF-8");
+        	   //response.setContentType("text/html;charset=UTF-8"); 
         	   request.getRequestDispatcher("getAllArticle").forward(request, response);
         	   /*String sqlQuery = "SELECT * FROM test_data.article_table";
         	   ResultSet rsQuery = stmt.executeQuery(sqlQuery);
@@ -109,7 +117,7 @@ public class addArticle<boolen> extends HttpServlet {
            } else {
         	   
            }
-           System.out.println("rs:" + rs);
+           //System.out.println("rs:" + rs);
            
            stmt.close();
            conn.close();

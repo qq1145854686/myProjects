@@ -52,8 +52,7 @@ public class getAllArticle extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("进入到doGet()方法");
 		response.setContentType("text/html");
-		response.setCharacterEncoding("utf-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		//建立数据库连接获取文章列表
 		// 注册 JDBC 驱动器
         try {
@@ -84,7 +83,7 @@ public class getAllArticle extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        System.out.println("stmt:"+stmt);
+        //System.out.println("stmt:"+stmt);
         String sqlQuery = "SELECT * FROM test_data.article_table";
  	   ResultSet rsQuery = null;
 		try {
@@ -95,32 +94,37 @@ public class getAllArticle extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
- 	   System.out.println(rsQuery);
+ 	   System.out.println("rsQuery:"+rsQuery);
  	   // 设置响应内容类型
  	      response.setContentType("text/html");
  	   // 展开结果集数据库
         try {
         	//Map<String, String> map = new HashMap<String,String>();
-        	 JSONObject jsonObject = new JSONObject();
+        	 
         	ArrayList list = new ArrayList();
         	while(rsQuery.next()){
+        		JSONObject jsonObject = new JSONObject();
 			   // 通过字段检索
         	   int id = rsQuery.getInt("article_id");
+        	   System.out.println("id:"+id);
         	   jsonObject.put("id", id);
 			   String title  = rsQuery.getString("article_title");
 			   jsonObject.put("title", title);
-			   System.out.print(title);
+			   //System.out.print(title);
 			   String content = rsQuery.getString("article_content");
 			   jsonObject.put("content", content);
+			   String catalog = rsQuery.getString("article_catalog");
+			   jsonObject.put("catalog", catalog);
 			  /* for(String key : map.keySet()){ String value = map.get(key);
 				  System.out.println(key+"  "+value); 
 			   }*/
 			   System.out.println("jsonObject:"+ jsonObject);
 			   list.add(jsonObject);
-			   System.out.println("list:"+list);
 			}
+        	System.out.println("list:"+list);
 			//ServletRequest application = null;
 			request.setAttribute("list", list);
+			//request.setCharacterEncoding("utf-8");
 			request.getRequestDispatcher("articleList.jsp").forward(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
