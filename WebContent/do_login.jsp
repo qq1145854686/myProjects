@@ -1,5 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    import="java.util.*,java.sql.Connection,java.sql.DriverManager,java.sql.ResultSet,java.sql.SQLException,java.sql.Statement" pageEncoding="ISO-8859-1"%> 
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    import="
+    java.util.*,
+    java.sql.Connection,
+    java.sql.DriverManager,
+    java.sql.ResultSet,
+    java.sql.SQLException,
+    java.sql.Statement,
+    com.pojo.Login" 
+    pageEncoding="utf-8"%> 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,10 +18,27 @@
 <body>
 	<!--获取页面参数  -->
 	<%
+		//设置编码
+		request.setCharacterEncoding("utf-8");
 		String username = request.getParameter("username");
 		String password = request.getParameter("pwd");
+		//利用session进行多个页面之间传值
+		session.setAttribute("username", username);
+		session.setAttribute("password", password);
 		System.out.println(username);
-		//注册JDBC驱动
+		//创建对象
+		Login lo = new Login();
+		//调用方法
+		int result = lo.login(username, password);
+		//返回一表示登录成功跳转到登录成功界面
+		if(result>0){
+			response.sendRedirect("index.jsp");
+		}else if(result==0){
+			response.sendRedirect("error.jsp");//登录失败
+		}else{
+			out.print("系统出现异常");
+		}
+		/* //注册JDBC驱动
 		Class.forName("com.mysql.jdbc.Driver");
 		//打开一个连接
 		Connection  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true","root","123456");
@@ -26,7 +51,7 @@
 		} else {
 			response.sendRedirect("error.jsp");
 			System.out.print("用户名密码不存在!");
-		}
+		} */
 		
 		/* if("admin".equals(username) && "123456".equals(password)){
 			session.setAttribute("username", username);
@@ -37,7 +62,7 @@
 		} else {
 			response.sendRedirect("error.jsp");
 		} */
-		if (username != null) {
+		/* if (username != null) {
 			request.setAttribute("username", username);
 			application.setAttribute("username", username);
 		}
@@ -47,7 +72,7 @@
 		System.out.println("username:"+ username);
 		Cookie cookie = new Cookie("username", username);
 		System.out.println("设置了cookie");
-		cookie.setMaxAge(60*60*24*10);
+		cookie.setMaxAge(60*60*24*10); */
 		
 		//跳轉到index.jsp頁面
 		//request.getRequestDispatcher("index.jsp").forward(request, response);
