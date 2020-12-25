@@ -3,11 +3,31 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html ">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>我的第一个jsp应用程序</title>
+<title>知识库管理</title>
+<!-- 字节跳动引用速度较快 -->
+<script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
+</script> -->
+<style type="text/css">
+	nav ul {
+		width: 100%;
+	}
+	nav ul li {
+		background-color: #000;
+		list-style: none;
+		text-align: center;
+		text-decoration: none;
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		margin-bottom: 8px;
+		margin-left: -40px;
+	}
+</style>
 </head>
 <body>
 	<!-- jsp頁面初始化調用生命週期 
@@ -42,12 +62,13 @@
 			<button type="submit">登录</button>
 		</form>
 	 -->
-	 <h5>我的应用首页</h5>
+	 <nav><h5 style="display:inline-block;">我的应用首页&nbsp;&gt;</h5><label id="second"></label>&nbsp;&gt;</nav>
+	 
 	 <hr>
 	 <%
 	 	String username="admin";
-	 	//List list2 = new ArrayList();
-	 	//list2= request.getAttribute("list2");
+	 	//List list = new ArrayList();
+	 	//list= request.getAttribute("list2");
 	 	//username = application.getAttribute("username").toString();
 	 	Cookie[] cookies = request.getCookies();
 	 	System.out.println(cookies);
@@ -62,54 +83,39 @@
 	 		}
 	 	}
 	 %> 
-	 <div style="float: right; height:20px;"><strong>欢迎你！ <%= username %> </strong></div>
-	 <div style="clear: both;"></div>
+	
+	 <header style="background: green;height: 100px;">
+		 <div style="float: right; height:40px; line-height: 40px; padding:10px;"><strong>欢迎你！ <%= username %> </strong></div>
+		 <div style="clear: both;"></div>
 	 <hr>
+	 </header>
+		<main style="background-color:#fff; width: 100%; height: 400px;">
+			<nav style="background-color:gray;width:200px;height:400px;float:left;">
+			<ul id="nav">
+				<li> <a href="addArticle.jsp?edit=0" target="article">文章管理</a></li>
+				<li> <a href="user.jsp" target="article">用户管理</a></li>
+				<li><a href="echarts.jsp" target="article">统计分析</a></li>
+				<li> <a href="limit.jsp" target="article">权限管理</a></li>
+			</ul>
+			</nav>
+			<section style="background: #ececec;margin-left: 200px;height: 400px; ">
+				<iframe frameborder="0" width="100%" height="300px" name="article" scrolling="yes" src="addArticle.jsp"></iframe>
+			</section>
+			<!-- <aside style="width: 200px; float: right;">
+				这是侧边栏<br>这是侧边栏<br>这是侧边栏<br>
+			</aside> -->
+		</main>
+	<footer style="background-color: orange; height: 80px; line-height: 80px; text-align: center;">
+	CopyRight@copy2020版权所有&copy湖北工业大学|反馈意见：1145854686@qq.com
+	地址：湖北省武汉市洪山区南李路28号 |邮编：430068 
+	</footer>
 	 
-	 <div class="contaier" style="width: 450px; margin: 130px auto;">
-	 	<div class="title" style="border-bottom: 1px solid black;">发布文章</div>
-	 	<form action="/myFirstJavaProject/addArticle" method="GET">
-	 		<table >
-	 			<tr>
-	 				<td>文章标题:</td>
-	 				<td><input type="text" name="title" placeholder="请输入文章标题"/></td>
-	 			</tr>
-	 			<tr>
-	 				<td>文章内容:</td>
-	 				<td>
-	 					<textarea rows="5" cols="25" name="content" placeholder="请输入文章内容">
-	 					</textarea>
-	 				</td>
-	 			</tr>
-	 			<tr>
-	 				<td>所属目录:</td>
-	 				<td>
-	 					<select name="catalog">
-	 						 <c:forEach items="${list2}"  var="k" > 
-	 						 	<%-- <c:out value="  ${k} "/><br> --%> 
-	 						 	<option value="${k} ">${k} </option> 
-	 						 </c:forEach>
-	 					</select>
-	 					<!-- <select>
-	 						<option value="1">目录1</option>
-	 						<option value="2">目录2</option>
-	 						<option value="3">目录3</option>
-	 					</select> -->
-	 				</td>
-	 			</tr>
-	 			<tr>
-	 				<td>文章封面:</td>
-	 				<td>
-	 					<label>选择封面:</label>
-	 					<input type="file" name="file" id="file"/>
-	 				</td>
-	 			</tr>
-	 			<tr><td align="center">
-	 				<button type="submit">确定添加</button>
-	 			</td></tr>
-	 		</table>
-	 	</form>
-	 </div>
+	 <script type="text/javascript">
+	 	$('#nav a').click(function(){
+	 		var secondNavName = $(this).html();
+	 		$('#second').html(secondNavName);
+	 	});	 
+	 </script>
 	 
 </body>
 </html>

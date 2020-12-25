@@ -26,11 +26,15 @@
 	%>
 	<!-- jstl表达式遍历输出内容 -->
 	<c:forEach var="item"  items="${list}"  begin="0" end="10"  varStatus="s" >
-		<label>标题：</label>&nbsp;<c:out value="  ${item.title } "/>&nbsp;<label>所属目录:</label><c:out value="  ${item.catalog } "/><br>
-		<hr>
-		<label>内容：</label>&nbsp;<c:out value="${item.content} "/><br>
-		<a href="/myFirstJavaProject/getArticleDetail?id=${item.id}"><button>详情</button></a>
-		<a  href="/myFirstJavaProject/deleteArticle?id=${item.id}"><button>删除</button></a>
+		<article>
+			<h2><c:out value="  ${item.title } "/></h2><label>所属目录:</label>&nbsp;<c:out value="  ${item.catalog } "/><br>
+			<p><c:out value="${item.content} "/></p>
+		</article>
+		<aside>
+			<a href="/myFirstJavaProject/getArticleDetail?id=${item.id}"><button>详情</button></a>
+			<a  href="/myFirstJavaProject/deleteArticle?id=${item.id}"><button>删除</button></a>
+			<a href="/myFirstJavaProject/addArticle.jsp?title=${item.title}&content=${item.content}&catalog=${item.catalog}&edit=1"  id="edit"><button>编辑</button></a>
+		</aside>
 		<hr>
 	</c:forEach> 
 </body>

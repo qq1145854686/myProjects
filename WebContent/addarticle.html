@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<div class="contaier" style="width: 450px; margin: 30px auto;">
+		 	<div class="title" style="border-bottom: 1px solid black;">发布文章</div>
+		 	<form action="/myFirstJavaProject/addArticle" method="get">
+		 		<table >
+		 			<tr>
+		 				<td>文章标题:</td>
+		 				<td><input type="text" name="title" placeholder="请输入文章标题"/></td>
+		 			</tr>
+		 			<tr >
+		 				<td>文章内容:</td>
+		 				<td>
+		 					<textarea rows="5" cols="51" name="content" placeholder="请输入文章内容">
+		 					</textarea>
+		 				</td>
+		 			</tr>
+		 			<tr >
+		 				<td>所属目录:</td>
+		 				<td>
+		 					<!-- <select name="catalog">
+		 						 <c:forEach items="${list2}"  var="k" > 
+		 						 	<c:out value="  ${k} "/><br> 
+		 						 	<option value="${k} ">${k} </option> 
+		 						 </c:forEach>
+		 					</select>  -->
+		 					<select>
+		 						<option value="1">目录1</option>
+		 						<option value="2">目录2</option>
+		 						<option value="3">目录3</option>
+		 					</select>
+		 				</td>
+		 			</tr>
+		 			<tr >
+		 				<td>文章封面:</td>
+		 				<td>
+		 					<label>选择封面:</label>
+		 					<input type="file" name="file" id="file"/>
+		 				</td>
+		 			</tr>
+		 			<tr><td align="center">
+		 				<button type="submit">确定添加</button>
+		 			</td></tr>
+		 		</table>
+		 	</form>
+		 </div>
+	</p>
+</body>
+</html>

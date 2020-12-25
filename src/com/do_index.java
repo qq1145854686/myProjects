@@ -84,7 +84,7 @@ public class do_index extends HttpServlet {
 
             }
 			request.setAttribute("list2", list2);
-			//System.out.println("list2:"+list2);
+			System.out.println("list2:"+list2);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 			//URL定向到首页
 			//response.sendRedirect("index.jsp");

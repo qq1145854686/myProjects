@@ -50,7 +50,6 @@ public class getAllArticle extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("进入到doGet()方法");
 		response.setContentType("text/html");
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		//建立数据库连接获取文章列表
@@ -64,7 +63,8 @@ public class getAllArticle extends HttpServlet {
         //  数据库的用户名与密码，需要根据自己的设置
         final String DB_URL="jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true";
         final String USER = "root";
-        final String PASS = "123456";
+        //final String PASS = "123456";
+        final String PASS = "Qq4210831994.";
         request.setCharacterEncoding("utf-8");
         
         // 打开一个连接
@@ -113,7 +113,8 @@ public class getAllArticle extends HttpServlet {
 			   //System.out.print(title);
 			   String content = rsQuery.getString("article_content");
 			   jsonObject.put("content", content);
-			   String catalog = rsQuery.getString("article_catalog");
+			   int catalog = rsQuery.getInt("article_catalog");
+			   System.out.print(catalog);
 			   jsonObject.put("catalog", catalog);
 			  /* for(String key : map.keySet()){ String value = map.get(key);
 				  System.out.println(key+"  "+value); 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     import="
     java.util.*,
+    java.util.Map,
     java.sql.Connection,
     java.sql.DriverManager,
     java.sql.ResultSet,
@@ -26,14 +27,25 @@
 		session.setAttribute("username", username);
 		session.setAttribute("password", password);
 		System.out.println(username);
+		Map<String, Integer> result = new HashMap<String, Integer>();
 		//创建对象
 		Login lo = new Login();
 		//调用方法
-		int result = lo.login(username, password);
+		 result = lo.login(username, password);
+		int count = result.get("count");
+		int role = result.get("role");
 		//返回一表示登录成功跳转到登录成功界面
-		if(result>0){
-			response.sendRedirect("index.jsp");
-		}else if(result==0){
+		if(count > 0){
+			if (role == 1) {
+				response.sendRedirect("index.jsp");
+			} else if ( role == 2){
+				request.getRequestDispatcher("getAllArticle").forward(request, response);
+			} else {
+				out.print("没有此角色请联系管理员！");
+			}
+			
+			//request.getRequestDispatcher("do_index").forward(request, response);
+		}else if(count == 0){
 			response.sendRedirect("error.jsp");//登录失败
 		}else{
 			out.print("系统出现异常");

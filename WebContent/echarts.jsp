@@ -32,10 +32,13 @@
 		}
 		request.setAttribute("list", list);
 %>
+<header>柱状图分析</header>
 <hr>
 
 <!-- 柱状图容器 -->
 <div id="mychart" style="width: 60%; height: 400px; margin: 30px auto;"></div>
+<hr>
+<header>饼状图分析</header>
 <script type="text/javascript">
 	//请求后台数据接口
 	$.ajax({

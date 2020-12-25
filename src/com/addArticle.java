@@ -37,7 +37,7 @@ public class addArticle<boolen> extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		System.out.println("进入初始化生命周期");
+		
 		// TODO Auto-generated method stub
 	}
 
@@ -58,13 +58,13 @@ public class addArticle<boolen> extends HttpServlet {
 		//注释掉影响显示乱码问题
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setCharacterEncoding("utf-8");
-		System.out.print("进入doGet处理方法");
 		PrintWriter out = ( response).getWriter();
 		final String DB_URL="jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true";
 		System.out.println(DB_URL);
 		 //  数据库的用户名与密码，需要根据自己的设置
         final String USER = "root";
-        final String PASS = "123456";
+        //final String PASS = "123456";
+        final String PASS = "Qq4210831994.";
         request.setCharacterEncoding("utf-8");
         
         //((ServletResponse) request).setContentType("text/html");

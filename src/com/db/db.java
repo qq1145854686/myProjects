@@ -10,7 +10,7 @@ public class db {
 		 //数据库URL
 		 String dbURL="jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true"; 
 		 String userName="root";//默认用户
-		 String userPwd="123456"; 
+		 String userPwd="Qq4210831994."; 
 		 try {
 			 //注册数据库驱动
 			 Class.forName(driverName); 
