@@ -40,7 +40,7 @@ public class databaseAccess extends HttpServlet {
 	       
 	   //  数据库的用户名与密码，需要根据自己的设置
 	        final String USER = "root";
-	        final String PASS = "123456";
+	        final String PASS = "Qq4210831994.";
 	        try{
 	            // 注册 JDBC 驱动器
 	            Class.forName("com.mysql.jdbc.Driver");

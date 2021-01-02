@@ -60,16 +60,15 @@ public class addArticle<boolen> extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = ( response).getWriter();
 		final String DB_URL="jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true";
-		System.out.println(DB_URL);
+		
 		 //  数据库的用户名与密码，需要根据自己的设置
         final String USER = "root";
-        //final String PASS = "123456";
         final String PASS = "Qq4210831994.";
         request.setCharacterEncoding("utf-8");
         
         //((ServletResponse) request).setContentType("text/html");
         response.setContentType("text/html;chartset=UTF-8");
-        response.setCharacterEncoding("utf-8");
+       
 		//获取请求的参数
 		//String title = request.getParameter("title");
         //String title = new String(request.getParameter("title").getBytes("iso-8859-1"), "utf-8");

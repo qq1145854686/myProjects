@@ -35,9 +35,9 @@
 		<h3>登陆</h3>
 		<div class="box">
 			<form action="do_login.jsp">
-				<label>用户名:</label><input type="text" name="username" placeholder="请输入用户名"/><br>
+				<label>账号:</label><input type="text" name="username" placeholder="请输入用户名"/><br>
 				<label>密码:</label><input type="password" name="pwd" placeholder="密码"/><br>
-				<button type="submit">登录</button>
+				<button type="submit">登录</button><a href="./register.jsp">还没账号?</a>
 			</form>
 		</div>
 	</div>

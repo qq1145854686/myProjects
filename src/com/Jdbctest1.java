@@ -19,7 +19,7 @@ public class Jdbctest1 {
 			String url = "jdbc:mysql:localhost:3306/testdata";
 			Properties info = new Properties();
 			info.put("user", "root");
-			info.put("password", "123456");
+			info.put("password", "Qq4210831994.");
 			//调用Driver接口的connect(url,info)获取数据库连接
 			java.sql.Connection conn = driver.connect(url, info);
 			System.out.println(conn);

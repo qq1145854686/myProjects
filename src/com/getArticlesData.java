@@ -8,14 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,33 +18,26 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class getAllArticle
+ * Servlet implementation class getArticlesData
  */
-@WebServlet(description = "获取文章列表", urlPatterns = { "/getAllArticle" })
-public class getAllArticle extends HttpServlet {
+@WebServlet(description = "获取文章列表数据", urlPatterns = { "/getArticlesData" })
+public class getArticlesData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public getAllArticle() {
+    public getArticlesData() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-		System.out.println("进入到初始化方法");
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter writer = response.getWriter();
@@ -109,26 +96,15 @@ public class getAllArticle extends HttpServlet {
         		JSONObject jsonObject = new JSONObject();
 			   // 通过字段检索
         	   int id = rsQuery.getInt("article_id");
-        	   System.out.println("id:"+id);
-        	   jsonObject.put("id", id);
-			   String title  = rsQuery.getString("article_title");
+        	   String title  = rsQuery.getString("article_title");
 			   jsonObject.put("title", title);
-			   //System.out.print(title);
 			   String content = rsQuery.getString("article_content");
 			   jsonObject.put("content", content);
 			   int catalog = rsQuery.getInt("article_catalog");
-			   System.out.print(catalog);
 			   jsonObject.put("catalog", catalog);
-			  /* for(String key : map.keySet()){ String value = map.get(key);
-				  System.out.println(key+"  "+value); 
-			   }*/
-			   System.out.println("jsonObject:"+ jsonObject);
 			   list.add(jsonObject);
 			}
-        	
-        	request.setAttribute("list", list);
-			writer.append(list.toString());
-			request.getRequestDispatcher("articleList.jsp").forward(request, response);
+        	writer.append(list.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -32,7 +32,7 @@
 	 //注册JDBC驱动
 	Class.forName("com.mysql.jdbc.Driver");
 	//打开一个连接
-	Connection  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true","root","123456");
+	Connection  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true","root","Qq4210831994.");
 	String sqlQuery = "select * from test_data.limit_table";
 	Statement stmt = conn.createStatement();
 	ResultSet rs= stmt.executeQuery(sqlQuery);

@@ -10,14 +10,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <!-- <servlet>
-  		<servlet-name>getChartsData</servlet-name>
-  		<servlet-class>com.getChartsData</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  		<servlet-name>getChartsData</servlet-name>
-  		<url-pattern>/getChartsData</url-pattern>
-  </servlet-mapping> -->
   <jsp-config>
     <taglib>
       <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>

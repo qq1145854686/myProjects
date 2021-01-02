@@ -55,7 +55,7 @@ public class Jdbctest2 extends HttpServlet {
 		String url = "jdbc:mysql:localhost:3306/test_data?serverTimezone=UTC&useSSL=false";
 		Properties info = new Properties();
 		info.put("user", "root");
-		info.put("password", "123456");
+		info.put("password", "Qq4210831994.");
 		//调用Driver接口的connect(url,info)获取数据库连接
 		java.sql.Connection conn = null;
 		try {

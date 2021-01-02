@@ -34,6 +34,7 @@
 		 result = lo.login(username, password);
 		int count = result.get("count");
 		int role = result.get("role");
+		System.out.println("count:"+count+"role:"+role);
 		//返回一表示登录成功跳转到登录成功界面
 		if(count > 0){
 			if (role == 1) {
@@ -53,7 +54,7 @@
 		/* //注册JDBC驱动
 		Class.forName("com.mysql.jdbc.Driver");
 		//打开一个连接
-		Connection  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true","root","123456");
+		Connection  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true","root","Qq4210831994.");
 		String sqlQuery = "SELECT * FROM test_data.user where username ='"+username+"'and password ='"+password+"'";
 		Statement stmt = conn.createStatement();
 		ResultSet rs= stmt.executeQuery(sqlQuery);
@@ -65,7 +66,7 @@
 			System.out.print("用户名密码不存在!");
 		} */
 		
-		/* if("admin".equals(username) && "123456".equals(password)){
+		/* if("admin".equals(username) && "Qq4210831994.".equals(password)){
 			session.setAttribute("username", username);
 			//application.setAttribute("username", username);
 			request.setAttribute("username", username);

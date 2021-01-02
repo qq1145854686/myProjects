@@ -53,7 +53,7 @@ public class getChartsData extends HttpServlet {
 				//打开一个连接
 				java.sql.Connection conn = null;
 				try {
-					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true","root","123456");
+					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true","root","Qq4210831994.");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

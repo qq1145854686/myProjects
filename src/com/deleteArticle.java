@@ -41,11 +41,11 @@ public class deleteArticle extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String id = request.getParameter("id");
 		System.out.print(id);
 		//int id = Integer.parseInt(str);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		//注册JDBC驱动器
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -56,7 +56,7 @@ public class deleteArticle extends HttpServlet {
 		 //  数据库的用户名与密码，需要根据自己的设置
         final String DB_URL="jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true";
         final String USER = "root";
-        final String PASS = "123456";
+        final String PASS = "Qq4210831994.";
         request.setCharacterEncoding("utf-8");
         //打开一个连接
         Connection conn = null;
@@ -79,12 +79,12 @@ public class deleteArticle extends HttpServlet {
 		}
         
 		try {
-			System.out.print("123");
+			
 			boolean rsQuery = stmt.execute(sqlQuery);
 			System.out.print(rsQuery);
-			//request.getRequestDispatcher("getAllArticle").forward(request, response);
+			request.getRequestDispatcher("getAllArticle").forward(request, response);
 			//response.sendRedirect("articleList.jsp");
-			response.sendRedirect("getAllArticle");
+			//response.sendRedirect("getAllArticle");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

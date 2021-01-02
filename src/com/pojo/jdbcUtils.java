@@ -22,7 +22,7 @@ public class jdbcUtils {
 	static {
 		url = "jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true";
 		user = "root";
-		pwd= "123456";
+		pwd= "Qq4210831994.";
 	}
 	//注册jdbc方法
 	public static void loadDriver () {

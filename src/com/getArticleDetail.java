@@ -56,7 +56,7 @@ public class getArticleDetail extends HttpServlet {
 		 //  数据库的用户名与密码，需要根据自己的设置
         final String DB_URL="jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true";
         final String USER = "root";
-        final String PASS = "123456";
+        final String PASS = "Qq4210831994.";
         request.setCharacterEncoding("utf-8");
         //打开一个连接
         Connection conn = null;
