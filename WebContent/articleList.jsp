@@ -15,7 +15,7 @@
 <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
-<body>
+<body style="overflow-y: auto;">
 	<label>选择目录:</label>
 	<select name="catalog" style="width: 200px;height: 30px;">
 		<option value="1">目录一</option>
@@ -51,7 +51,6 @@
 	 
 	<script type="text/javascript">
 		$("select[name='catalog']").change(function(){
-			console.log($(this).val());
 			var catalog = $(this).val();
 			$.ajax({
 				method: 'get',
