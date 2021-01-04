@@ -40,6 +40,8 @@ public class getArticlesData extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html");
 		response.setContentType("application/json; charset=utf-8");
+		//获取请求参数
+		String catalog = request.getParameter("catalog");
 		PrintWriter writer = response.getWriter();
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		//建立数据库连接获取文章列表
@@ -74,7 +76,7 @@ public class getArticlesData extends HttpServlet {
 			e.printStackTrace();
 		}
        
-       String sqlQuery = "SELECT * FROM test_data.article_table";
+       String sqlQuery = "SELECT * FROM test_data.article_table where article_catalog ='"+ catalog+ "'"; 
  	   ResultSet rsQuery = null;
 		try {
 			rsQuery = stmt.executeQuery(sqlQuery);
@@ -100,8 +102,8 @@ public class getArticlesData extends HttpServlet {
 			   jsonObject.put("title", title);
 			   String content = rsQuery.getString("article_content");
 			   jsonObject.put("content", content);
-			   int catalog = rsQuery.getInt("article_catalog");
-			   jsonObject.put("catalog", catalog);
+			   int catalog1 = rsQuery.getInt("article_catalog");
+			   jsonObject.put("catalog", catalog1);
 			   list.add(jsonObject);
 			}
         	writer.append(list.toString());

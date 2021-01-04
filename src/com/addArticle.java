@@ -67,7 +67,7 @@ public class addArticle<boolen> extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         
         //((ServletResponse) request).setContentType("text/html");
-        response.setContentType("text/html;chartset=UTF-8");
+        response.setContentType("text/html");
        
 		//获取请求的参数
 		//String title = request.getParameter("title");
