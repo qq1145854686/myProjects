@@ -7,7 +7,8 @@
     java.sql.ResultSet,
     java.sql.SQLException,
     java.sql.Statement,
-    com.pojo.Login" 
+    com.pojo.Login,
+    javax.servlet.ServletContext" 
     pageEncoding="utf-8"%> 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -34,7 +35,11 @@
 		 result = lo.login(username, password);
 		int count = result.get("count");
 		int role = result.get("role");
-		System.out.println("count:"+count+"role:"+role);
+		int user_id =result.get("user_id");
+		
+		application.setAttribute("role",  role);
+		application.setAttribute("user_id",  user_id);
+		//application.setAttribute("role",  role);
 		//返回一表示登录成功跳转到登录成功界面
 		if(count > 0){
 			if (role == 1) {

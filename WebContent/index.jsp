@@ -96,6 +96,7 @@
 				<li> <a href="user.jsp" target="article">用户管理</a></li>
 				<li><a href="echarts.jsp" target="article">统计分析</a></li>
 				<li> <a href="limit.jsp" target="article">权限管理</a></li>
+				<li> <a href="info.jsp" target="article">个人中心</a></li>
 			</ul>
 			</nav>
 			<section style="background: #ececec;margin-left: 200px;height: 400px; ">

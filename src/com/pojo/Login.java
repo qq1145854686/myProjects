@@ -14,6 +14,7 @@ public Map<String, Integer> login(String name,String pwd) {
 	dbcon = new db();
 	int count=-1;
 	int role ;
+	int id;
 	try{
 	//从数据库中获取值并判断用户是否存在
 
@@ -25,8 +26,10 @@ public Map<String, Integer> login(String name,String pwd) {
 	if(rs.next()) {//如果查到数据库sql，则跳转到登录成功界面
 		count = rs.getInt(1);
 		role = rs.getInt("userrole");
+		id =rs.getInt("iduser");
 		map.put("count", count);
 		map.put("role", role);
+		map.put("user_id", id);
 		
 		 }else{
 			 count = rs.getInt(0); 

@@ -61,6 +61,8 @@ public class addArticle<boolen> extends HttpServlet {
 		PrintWriter out = ( response).getWriter();
 		final String DB_URL="jdbc:mysql://localhost:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true";
 		
+		//final String DB_URL="jdbc:mysql://47.103.223.103:3306/test_data?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=FALSE";
+		
 		 //  数据库的用户名与密码，需要根据自己的设置
         final String USER = "root";
         final String PASS = "Qq4210831994.";
@@ -78,20 +80,20 @@ public class addArticle<boolen> extends HttpServlet {
 		System.out.println("catalog:"+catalog);
         try{
             // 注册 JDBC 驱动器
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             // 打开一个连接
             Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
             // 执行 SQL 查询
             Statement stmt = conn.createStatement();
-            System.out.println("stmt:"+stmt);
-            String sql;
+           String sql;
             //sql = "SELECT id, first, last, age FROM Employees";
-            sql = "INSERT INTO article_table (article_title, article_content, article_catalog) VALUES ( ' "+title+" ',' "+content+"',' "+catalog+" ')";
+            sql = "INSERT INTO article_table (article_title, article_content, article_catalog) VALUES ( ' "+title+" ',' "+content+" ',"+catalog+" )";
             System.out.println("sql:"+sql);
            //boolean rs = stmt.execute(sql);
-           System.out.println("123");
-           int result = stmt.executeUpdate(sql);
+          int result = stmt.executeUpdate(sql);
+          System.out.println("result:"+ result);
+           //request.getRequestDispatcher("getAllArticle").forward(request, response);
            if (result == 1) {
         	   //response.setCharacterEncoding("UTF-8");
         	   //response.setContentType("text/html;charset=UTF-8"); 
