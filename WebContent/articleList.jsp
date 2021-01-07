@@ -14,26 +14,35 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<style type="text/css">
+</style>
 </head>
 <body style="overflow-y: auto;">
 	<form class="form-inline">
-		<div class="form-group">
-			<label>选择目录:</label>
-			<select name="catalog" class="form-control" style="width: 200px;height: 33px;">
-				<option value="1">目录一</option>
-				<option value="2">目录二</option>
-				<option value="3">目录三</option>
-			</select>
-		</div>
-		<div class="form-group">
-			<label>文章标题:</label>
-			<div class="input-group">
-		      <input type="text" placeholder="请输入文章标题" name="title" style="width: 200px; height: 33px;"/>
-		      <span class="input-group-btn">
-		        <button class="btn btn-default" id="search" type="button">Go!</button>
-		      </span>
+	  
+	   <div class="row">
+	        <div class="col-lg-6 col-md-6 col-xs-6">
+	        	<div class="form-group">
+					<label>选择目录:</label>
+					<select name="catalog" class="form-control" style="height: 33px;">
+						<option value="1">目录一</option>
+						<option value="2">目录二</option>
+						<option value="3">目录三</option>
+					</select>
+				</div>
+	        </div>
+			<div class="col-lg-6 col-md-6 col-xs-6">
+				<div class="form-group">
+					<label>文章标题:</label>
+					<div class="input-group">
+				      <input type="text"  class="form-control" placeholder="请输入文章标题" name="title" style=" height: 33px;"/>
+				      <span class="input-group-btn">
+				        <button class="btn btn-default" id="search" type="button">Go!</button>
+				      </span>
+				    </div>
 		    </div>
-	    </div>
+			</div>
+		</div>
 	</from>
 	<h1>文章列表</h1>
 	<hr>
@@ -45,9 +54,9 @@
 				<p><c:out value="${item.content} "/></p>
 			</article>
 			<aside>
-				<a href="/myFirstJavaProject/getArticleDetail?id=${item.id}"><button>详情</button></a>
-				<a  href="/myFirstJavaProject/deleteArticle?id=${item.id}"><button>删除</button></a>
-				<a href="/myFirstJavaProject/addArticle.jsp?title=${item.title}&content=${item.content}&catalog=${item.catalog}&edit=1"  id="edit"><button>编辑</button></a>
+				<a href="/myFirstJavaProject/getArticleDetail?id=${item.id}">详情</a>
+				<a  href="/myFirstJavaProject/deleteArticle?id=${item.id}">删除</a>
+				<a href="/myFirstJavaProject/addArticle.jsp?id=${item.id}&title=${item.title}&content=${item.content}&catalog=${item.catalog}&edit=1"  >编辑</a>
 			</aside>
 			<hr>
 		</c:forEach>

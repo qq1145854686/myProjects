@@ -74,6 +74,8 @@ public class addArticle<boolen> extends HttpServlet {
 		//获取请求的参数
 		//String title = request.getParameter("title");
         //String title = new String(request.getParameter("title").getBytes("iso-8859-1"), "utf-8");
+        String id = request.getParameter("id");
+        System.out.println("id:"+id);
         String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String catalog = request.getParameter("catalog");
@@ -87,13 +89,15 @@ public class addArticle<boolen> extends HttpServlet {
             // 执行 SQL 查询
             Statement stmt = conn.createStatement();
            String sql;
-            //sql = "SELECT id, first, last, age FROM Employees";
-            sql = "INSERT INTO article_table (article_title, article_content, article_catalog) VALUES ( ' "+title+" ',' "+content+" ',"+catalog+" )";
-            System.out.println("sql:"+sql);
+           if (id != "") {
+        	   sql = "update article_table SET article_title='"+ title +"' , article_content='"+content+"' ,article_catalog="+catalog+" where article_id="+id +"";
+           }  else {
+        	   sql = "INSERT INTO article_table (article_title, article_content, article_catalog) VALUES ( ' "+title+" ',' "+content+" ',"+catalog+" )";
+           }
+           System.out.println("sql:"+sql);
            //boolean rs = stmt.execute(sql);
           int result = stmt.executeUpdate(sql);
           System.out.println("result:"+ result);
-           //request.getRequestDispatcher("getAllArticle").forward(request, response);
            if (result == 1) {
         	   //response.setCharacterEncoding("UTF-8");
         	   //response.setContentType("text/html;charset=UTF-8"); 

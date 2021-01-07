@@ -32,6 +32,7 @@
 			//设置编码
 			request.setCharacterEncoding("utf-8");
 			//获取浏览器地址栏参数
+			String id = request.getParameter("id");
 			String title = request.getParameter("title");	
 			String content = request.getParameter("content");	
 			System.out.println("content:"+ content);
@@ -40,6 +41,7 @@
 			request.setAttribute("content", content);
 			request.setAttribute("catalog", catalog);
 		%>
+		<label id="article_id" class="hidden"><%= id %></label>
 		<labe id="title" class="hidden"><%= title %></labe>
 		<labe id="content" class="hidden"><%= content %></labe>
 		<labe id="catalog" class="hidden"><%= catalog %></labe>
@@ -49,6 +51,7 @@
 		 	<div class="title" style="border-bottom: 1px solid black;">发布文章</div>
 		 	<form action="/myFirstJavaProject/addArticle" method="get">
 		 		<table >
+		 			<tr><td><input type="text" name="id" style="display: none;"/></td></tr>
 		 			<tr>
 		 				<td>文章标题:</td>
 		 				<td><input class="required" type="text"  name="title" placeholder="请输入文章标题"/></td>
@@ -122,9 +125,11 @@
 		 		} 
 		 	});
 		   //详情页表单数据回显
-		   var title = $("#title").html();
-		   if(title != null) {
-			   $("input[name=title]").val(title);
+		   var id = $("#article_id").html();
+		   console.log(id);
+		   if(id != null) {
+			   $("input[name='id']").val(id);
+			   $("input[name=title]").val($("#title").html());
 			   $("textarea[name=content]").val($("#content").html());
 			   $("select[name=catalog]").val(($("#catalog").html()));
 		   }
