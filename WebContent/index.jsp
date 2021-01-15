@@ -10,8 +10,6 @@
 <title>知识库管理</title>
 <!-- 字节跳动引用速度较快 -->
 <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
-</script> -->
 <style type="text/css">
 	nav ul {
 		width: 100%;
@@ -30,46 +28,10 @@
 </style>
 </head>
 <body>
-	<!-- jsp頁面初始化調用生命週期 
-	<%-- <%!
-		private int initNum = 0;
-		private int serviceNum = 0;
-		private int destroyNum = 0;
-		public void jspInit () {
-			initNum++;
-			System.out.println("jspInit方法初始了" +initNum+"次");
-		}
-	%> --%>
-	-->
-	<!-- 統計生命週期次數 -->
-	<!-- 
-		<%-- <%
-			serviceNum++;
-			System.out.println("jspService()方法调用了"+ serviceNum+"次");
-			String content1 = "生命周期初始化次数:" + initNum;
-			String content2 = "服务调用次数:" + serviceNum;
-		%> --%>
-	 -->
-	<!-- 
-		<h1>hello world!</h1>
-		<h4>生命周期测试</h4>
-		<p><%-- <%= content1 %> --%></p>
-		<p><%-- <%= content2 %> --%></p>
-		<hr>
-		<form action="/myFirstJavaProject/loginServlet">
-			<label>用户名:</label><input  type="text" name="username"/><br>
-			<lable>密码:</lable><input type="text" name="pwd"/><br>
-			<button type="submit">登录</button>
-		</form>
-	 -->
-	 <nav><h5 style="display:inline-block;">我的应用首页&nbsp;&gt;</h5><label id="second"></label>&nbsp;&gt;</nav>
-	 
+	<nav><h5 style="display:inline-block;">我的应用首页&nbsp;&gt;</h5><label id="second"></label>&nbsp;&gt;</nav>
 	 <hr>
 	 <%
 	 	String username="admin";
-	 	//List list = new ArrayList();
-	 	//list= request.getAttribute("list2");
-	 	//username = application.getAttribute("username").toString();
 	 	Cookie[] cookies = request.getCookies();
 	 	System.out.println(cookies);
 	 	String user = "";

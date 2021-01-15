@@ -121,12 +121,10 @@
 					  $parent.append("<span class='msg onError'>" + errorMsg + "</span>");
 					  return false
 		 		}else {
-		 			console.log('123');
 		 		} 
 		 	});
 		   //详情页表单数据回显
 		   var id = $("#article_id").html();
-		   console.log(id);
 		   if(id != null) {
 			   $("input[name='id']").val(id);
 			   $("input[name=title]").val($("#title").html());

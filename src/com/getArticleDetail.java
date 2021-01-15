@@ -41,11 +41,14 @@ public class getArticleDetail extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//设置请求和响应编码
+		 request.setCharacterEncoding("utf-8");
+		response.setContentType("application/json; charset=utf-8");
 		//获取页面路劲参数
 		String id = request.getParameter("id");
 		System.out.print(id);
 		//int id = Integer.parseInt(str);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		//注册JDBC驱动器
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -79,14 +82,11 @@ public class getArticleDetail extends HttpServlet {
 		}
         
 		try {
-			System.out.print("123");
 			ResultSet rsQuery = stmt.executeQuery(sqlQuery);
 			System.out.print(rsQuery);
 			while(rsQuery.next()){
-				System.out.print("456");
 				 String title  = rsQuery.getString("article_title");
 				 request.setAttribute("title", title);
-				 System.out.print(title);
 				 String content = rsQuery.getString("article_content");
 				 request.setAttribute("content", content);
 			}
@@ -98,9 +98,7 @@ public class getArticleDetail extends HttpServlet {
 		}
 		// 设置响应内容类型
 	      response.setContentType("text/html");
-	      
-		
-	}
+	  }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -18,9 +18,9 @@
 </style>
 </head>
 <body style="overflow-y: auto;">
+	<div class="container-fuild">
 	<form class="form-inline">
-	  
-	   <div class="row">
+	  <div class="row">
 	        <div class="col-lg-6 col-md-6 col-xs-6">
 	        	<div class="form-group">
 					<label>选择目录:</label>
@@ -61,7 +61,7 @@
 			<hr>
 		</c:forEach>
 	</div>
-	 
+	 </div>
 	<script type="text/javascript">
 		$("select[name='catalog']").change(function(){
 			var catalog = $(this).val();
@@ -101,6 +101,13 @@
 									'</div>' +
 									'</div>'+
 								'</div>';
+							}
+						}else if(catalog =='3') {
+							for(var i=0; i<res.length; i++) {
+								strHtml += '<article>' +
+								'<h2>'+ res[i].title +'</h2><label>所属目录:'+ res[i].catalog+'</label>' +
+								'<p>'+ res[i].content+'</p>'
+								+'</article>';
 							}
 						}
 						$('#article-list').html(strHtml);

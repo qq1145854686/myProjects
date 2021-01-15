@@ -80,11 +80,16 @@ public class getArticlesData extends HttpServlet {
 			e.printStackTrace();
 		}
 		String sqlQuery = "";
-       if (title != null) {
-    	    sqlQuery = "SELECT * FROM test_data.article_table where article_catalog ='"+ catalog+ "' and article_title ='"+ title+"'"; 
-       } else {
-    	   sqlQuery = "SELECT * FROM test_data.article_table where article_catalog ='"+ catalog+ "'"; 
-       }
+		if (catalog == null) {
+			System.out.println("catalog:"+ catalog);
+			catalog = "1";
+		} 
+		 if (title != null) {
+	    	    sqlQuery = "SELECT * FROM test_data.article_table where article_catalog ='"+ catalog+ "' and article_title ='"+ title+"'"; 
+	       } else {
+	    	   sqlQuery = "SELECT * FROM test_data.article_table where article_catalog ='"+ catalog+ "'"; 
+	       }
+       System.out.println("sql:"+sqlQuery);
        ResultSet rsQuery = null;
 		try {
 			rsQuery = stmt.executeQuery(sqlQuery);
@@ -101,11 +106,12 @@ public class getArticlesData extends HttpServlet {
         try {
         	//Map<String, String> map = new HashMap<String,String>();
         	 
-        	ArrayList list = new ArrayList();
+        	ArrayList<JSONObject> list = new ArrayList<JSONObject>();
         	while(rsQuery.next()){
         		JSONObject jsonObject = new JSONObject();
 			   // 通过字段检索
         	   int id = rsQuery.getInt("article_id");
+        	   jsonObject.put("id", id);
         	   String title1  = rsQuery.getString("article_title");
 			   jsonObject.put("title", title1);
 			   String content = rsQuery.getString("article_content");
