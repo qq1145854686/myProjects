@@ -79,8 +79,7 @@ public class addArticle<boolen> extends HttpServlet {
         String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String catalog = request.getParameter("catalog");
-		System.out.println("catalog:"+catalog);
-        try{
+		try{
             // 注册 JDBC 驱动器
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -97,8 +96,7 @@ public class addArticle<boolen> extends HttpServlet {
            System.out.println("sql:"+sql);
            //boolean rs = stmt.execute(sql);
           int result = stmt.executeUpdate(sql);
-          System.out.println("result:"+ result);
-           if (result == 1) {
+         if (result == 1) {
         	   //response.setCharacterEncoding("UTF-8");
         	   //response.setContentType("text/html;charset=UTF-8"); 
         	   request.getRequestDispatcher("getAllArticle").forward(request, response);

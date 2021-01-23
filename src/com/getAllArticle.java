@@ -85,8 +85,8 @@ public class getAllArticle extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-       
-       String sqlQuery = "SELECT * FROM test_data.article_table";
+       //默认查询目录为一的文章
+       String sqlQuery = "SELECT * FROM test_data.article_table where article_catalog='1'";
  	   ResultSet rsQuery = null;
 		try {
 			rsQuery = stmt.executeQuery(sqlQuery);

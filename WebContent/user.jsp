@@ -39,8 +39,7 @@
 	ArrayList list = new ArrayList();
 	while (rs.next()) {
 		JSONObject jsonObject = new JSONObject();
-    	System.out.println("123");
-        //rs.get+数据库中对应的类型+(数据库中对应的列别名)
+    	//rs.get+数据库中对应的类型+(数据库中对应的列别名)
         String username =  rs.getString("username");
         jsonObject.put("username", username);
         String password =  rs.getString("password");

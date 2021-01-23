@@ -22,10 +22,12 @@
 		String title = String.valueOf(request.getAttribute("title"));
 		String content = String.valueOf(request.getAttribute("content"));
 		%>
-		<h3><%= title%></h3>
+		<h3>
+			 ${title }
+		</h3>
 		<hr>
 		<p>
-			<%= content%>
+			${content}
 		</p>
 	</div>
 </body>

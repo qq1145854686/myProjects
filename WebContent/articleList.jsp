@@ -21,7 +21,7 @@
 	<div class="container-fuild">
 	<form class="form-inline">
 	  <div class="row">
-	        <div class="col-lg-6 col-md-6 col-xs-6">
+	        <div class="col-lg-3 col-md-3 col-xs-6">
 	        	<div class="form-group">
 					<label>选择目录:</label>
 					<select name="catalog" class="form-control" style="height: 33px;">
@@ -31,7 +31,7 @@
 					</select>
 				</div>
 	        </div>
-			<div class="col-lg-6 col-md-6 col-xs-6">
+			<div class="col-lg-3 col-md-3 col-xs-6">
 				<div class="form-group">
 					<label>文章标题:</label>
 					<div class="input-group">
@@ -51,18 +51,19 @@
 		<c:forEach var="item"  items="${list}"  begin="0" end="999"  varStatus="s" >
 			<article>
 				<h2><c:out value="  ${item.title } "/></h2><label>所属目录:</label>&nbsp;<c:out value="  ${item.catalog } "/><br>
-				<p><c:out value="${item.content} "/></p>
+				<p>${item.content}</p>
 			</article>
 			<aside>
 				<a href="/myFirstJavaProject/getArticleDetail?id=${item.id}">详情</a>
 				<a  href="/myFirstJavaProject/deleteArticle?id=${item.id}">删除</a>
-				<a href="/myFirstJavaProject/addArticle.jsp?id=${item.id}&title=${item.title}&content=${item.content}&catalog=${item.catalog}&edit=1"  >编辑</a>
+				<a href="/myFirstJavaProject/addArticle.jsp?id=${item.id}&title=${item.title}&catalog=${item.catalog}&edit=1&&content=${item.content}">编辑</a>; 
 			</aside>
 			<hr>
 		</c:forEach>
 	</div>
 	 </div>
 	<script type="text/javascript">
+		
 		$("select[name='catalog']").change(function(){
 			var catalog = $(this).val();
 			$.ajax({
@@ -80,24 +81,22 @@
 							for(var i=0; i<res.length; i++) {
 								strHtml += '<article>' +
 								'<h2>'+ res[i].title +'</h2><label>所属目录:'+ res[i].catalog+'</label>' +
-								'<p>'+ res[i].content+'</p>'
+								'<p>'+ res[i].content +'</p>'
 								+'</article>';
 							}
 							
 						} else if (catalog == '2') {
 							var strHtml ='';
 							for(var i=0; i<res.length; i++) {
-								
 								strHtml +='<div class="container-fluid">' +
-								'<!-- Stack the columns on mobile by making one full-width and the other half-width -->' +
-									'<div class="row">' +
+								 '<div class="row">' +
 									  '<div class="col-xs-12 col-md-8">' +
 											'<h2>'+ res[i].title+'</h2><label>所属目录:'+ res[i].catalog+'</label>' +
 											'<p>'+ res[i].content+'</p>' +
 									'</div>'+
 									  '<div class="col-xs-6 col-md-4">' +
 									  	'<h2>'+ res[i].title+'</h2><label>所属目录:'+ res[i].catalog+'</label>'+
-										'<p>'+ res[i].content+'</p>' +
+										'<p>'+ res[i].content +'</p>' +
 									'</div>' +
 									'</div>'+
 								'</div>';
@@ -107,7 +106,10 @@
 								strHtml += '<article>' +
 								'<h2>'+ res[i].title +'</h2><label>所属目录:'+ res[i].catalog+'</label>' +
 								'<p>'+ res[i].content+'</p>'
-								+'</article>';
+								+'</article>'+
+								'<aside>' +
+								'<a href= "/myFirstJavaProject/editArticle.jsp?id='+res[i].id+'">编辑</a>'+
+								'</aside>'
 							}
 						}
 						$('#article-list').html(strHtml);

@@ -44,6 +44,7 @@ public class getArticlesData extends HttpServlet {
 		//获取请求参数
 		
 		String catalog = request.getParameter("catalog");
+		System.out.println("catalog:"+catalog);
 		//从请求参数中获取标题值
 		String title = request.getParameter("article_title");
 		PrintWriter writer = response.getWriter();

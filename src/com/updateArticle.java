@@ -38,7 +38,7 @@ public class updateArticle extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -55,15 +55,16 @@ public class updateArticle extends HttpServlet {
         final String USER = "root";
         final String PASS = "Qq4210831994.";
         request.setCharacterEncoding("utf-8");
-        response.setContentType("application/x-www-form-urlencoded;chartset=UTF-8");
+        response.setContentType("application/json;chartset=UTF-8");
         //获取请求参数
-        //String title = request.getParameter("article_title");
-		//String content = request.getParameter("article_content");
-		//String catalog = request.getParameter("article_catalog");
+        String id = request.getParameter("article_id");
+        String $title = request.getParameter("article_title");
+        String $content = request.getParameter("article_content");
+		String catalog = request.getParameter("article_catalog");
 		//获取post参数 
-		StringBuffer sb = new StringBuffer() ; 
+		/*StringBuffer sb = new StringBuffer() ; 
 		InputStream is = request.getInputStream(); 
-		InputStreamReader isr = new InputStreamReader(is);   
+		InputStreamReader isr = new InputStreamReader(is, "utf-8");   
 		BufferedReader br = new BufferedReader(isr); 
 		String s = "" ; 
 		while((s=br.readLine())!=null){ 
@@ -71,28 +72,29 @@ public class updateArticle extends HttpServlet {
 		} 
 		String str =sb.toString();
 		System.out.println("str:"+str);
+		//JSONObject pa = new JSONObject(str);
 		JSONObject pa=JSONObject.fromObject(str);
     	String $title=pa.getString("article_title");
     	int catalog=pa.getInt("article_catalog");
     	String $content=pa.getString("article_content");
     	int id = pa.getInt("article_id");
-    	System.out.println("title:"+$title);
+    	System.out.println("title:"+$title);*/
 		
     	try{
             // 注册 JDBC 驱动器
             Class.forName("com.mysql.jdbc.Driver");
-
             // 打开一个连接
             Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
             // 执行 SQL 查询
             Statement stmt = conn.createStatement();
-            System.out.println("stmt:"+stmt);
             String sql;
             //sql = "UPDATE article_table SET article_title=concat('123', article_title) , article_content=concat('456', article_content) , article_catalog="+catalog+" where article_id="+id +"";
             sql = "UPDATE article_table SET article_title='"+ $title +"' , article_content='"+$content+"' ,article_catalog="+catalog+" where article_id="+id +"";
-            System.out.println("sql:"+sql);
-           int result = stmt.executeUpdate(sql);
-           if (result == 1) {
+            int result = stmt.executeUpdate(sql);
+          // 设置响应内容类型
+  	      response.setContentType("text/html");
+          if (result == 1) {
+        	   //response.sendRedirect("getArticlesData?catalog=3");
         	   request.getRequestDispatcher("getAllArticle").forward(request, response);
         	}
            stmt.close();
